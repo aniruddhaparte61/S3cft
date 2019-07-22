@@ -1,0 +1,12 @@
+{
+AWSTemplateFormatVersion: 2019-07-22,
+Description: Simple S3 Bucket,
+Resources: {
+myS3Bucket: {
+Type: AWS::S3::Bucket,
+Properties:{
+BucketName: Group_4_DBDA
+}
+}
+}
+}

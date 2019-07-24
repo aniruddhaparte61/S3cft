@@ -1,27 +1,10 @@
 pipeline{
 	agent any
-	parameters {
-	string(name: 'S3Name',
-		defaultValue:'None',
-		description: 'Do the funky chicken!') 
-	}
+	properties([parameters([string(defaultValue: 'bucketname345', description: 'Select a unique name bucket name', name: 'Bucket', trim: false)])])
 	stages{
 	stage('Clone Repo') {
-		steps {
-			sh "export AWS_DEFAULT_REGION=us-east-1"
-			sh "aws cloudformation create-stack --stack-name Group87stack --template-body file://s3anicft.json --region 'us-east-1'"
-			}
+	echo "pulling changes from bucket ${params.bucketname345}"
+	git url:'https://github.com/aniruddhaparte61/S3cft.git',bucketname345:${params.bucketname345}
 	}
-		stage('Test'){
-			steps{
-				sh "ls"
-			}
-		}
-		stage('Deploy'){
-			steps{
-				sh "ls"
-			}
-		}
-	
 	}
 }
